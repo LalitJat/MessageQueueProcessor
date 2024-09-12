@@ -31,9 +31,12 @@ public class MessageQueueProcessor {
             logger.error("InterruptedException while processing messages.", e);
         }
 
-        logger.info("\nTotal Messages Processed Successfully: {}", messageProcessor.getSuccessCount());
-        logger.info("Total Errors Encountered: {}", messageProcessor.getErrorCount());
-        logger.info("--- MESSAGE QUEUE EXECUTION TASK COMPLETED ---\n");
+        // Get total successfully processed messages count
+        int successCount = messageProcessor.getSuccessCount();
+        int failedCount = messageProcessor.getErrorCount();
+
+        logger.info("Total Messages Processed Successfully: {}", successCount);
+        logger.info("Total Errors Encountered: {}", failedCount);
 
     }
 }
